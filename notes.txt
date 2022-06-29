@@ -1,0 +1,40 @@
+# Test:
+# pyinstaller --noconfirm --onedir --console  "D:/Leamon/project/TLK_pythonnet_dll_middleware/run.py"
+# pyinstaller --noconfirm --onedir --console --add-data "D:/Leamon/project/TLK_pythonnet_dll_middleware/BBoxAPI.dll;." --add-data "D:/Leamon/project/TLK_pythonnet_dll_middleware/files;files/" --add-data "D:/Leamon/project/TLK_pythonnet_dll_middleware/helper;helper/" --add-data "D:/Leamon/project/TLK_pythonnet_dll_middleware/routes;routes/"  "D:/Leamon/project/TLK_pythonnet_dll_middleware/run.py"
+
+pyinstaller打包筆記:
+(On Windows)
+需要先進到src folder
+pyinstaller .\api-middleware.spec --distpath .\output\dist --workpath .\output\build (O) folder executable的icon因為windows cache機制，需要修改重新修改檔名才會refresh
+pyinstaller --clean --hidden-import psutil --name=api-middleware --specpath .\output --distpath .\output\dist --workpath .\output\build --noconfirm --onedir --console --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\logging.conf;." --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\config.py;." --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\constant.py;." --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\tools;tools/" --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\lib;lib/" --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\bboxAPI;bboxAPI/" "D:\Leamon\project\box-suite\APP\python-middleware\src\run.py" (O)
+pyinstaller --clean --hidden-import psutil --name=api-middleware --specpath .\output --distpath .\output\dist --workpath .\output\build --noconfirm --onedir --console --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\logging.conf;." --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\config.py;." --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\constant.py;." --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\tools;tools/" --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\lib;lib/" --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\bboxAPI;bboxAPI/" "D:\Leamon\project\box-suite\APP\python-middleware\src\run.py" (O)
+pyinstaller --clean --icon=D:\Leamon\project\box-suite\APP\python-middleware\src\exe_icon_32.ico --hidden-import psutil --name=api-middleware --specpath .\output --distpath .\output\dist --workpath .\output\build --noconfirm --onedir --console --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\logging.conf;." --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\config.py;." --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\constant.py;." --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\tools;tools/" --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\lib;lib/" --add-data "D:\Leamon\project\box-suite\APP\python-middleware\src\bboxAPI;bboxAPI/" "D:\Leamon\project\box-suite\APP\python-middleware\src\run.py" (O)
+pyinstaller --onefile --hidden-import psutil --name=api-middleware --specpath .\output --distpath .\output\dist --workpath .\output\build --noconfirm --console --add-data "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\logging.conf;." --add-data "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\config.py;." --add-data "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\constant.py;." --add-data "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\tools;tools/" --add-data "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\lib;lib/" --add-data "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\bboxAPI;bboxAPI/" "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\run.py" (X)
+pyinstaller -F --hidden-import psutil --name=api-middleware --specpath .\output --distpath .\output\dist --workpath .\output\build --noconfirm --console --add-data "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\logging.conf;." --add-data "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\config.py;." --add-data "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\constant.py;." --add-data "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\tools;tools/" --add-data "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\lib;lib/" --add-data "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\bboxAPI;bboxAPI/" "D:\Leamon\project\TLK_cross_platform_middleware\FastAPI\src\run.py" (X)
+
+(On Linux)
+需要先進到src folder
+pyinstaller ./api-middleware.spec --distpath ./output/dist --workpath ./output/build (O)
+需要將;改成:
+pyinstaller --hidden-import psutil --name=api-middleware --specpath ./output --distpath ./output/dist --workpath ./output/build --noconfirm --onedir --console --add-data "/app/src/logging.conf:." --add-data "/app/src/config.py:." --add-data "/app/src/constant.py:." --add-data "/app/src/tools:tools/" --add-data "/app/src/lib:lib/" --add-data "/app/src/bboxAPI:bboxAPI/" "/app/src/run.py"
+pyinstaller --hidden-import psutil --name=api-middleware --specpath ./output --distpath ./output/dist --workpath ./output/build --noconfirm --onedir --console --add-data "/home/laber/box-suite/python-middleware/src/logging.conf:." --add-data "/home/laber/box-suite/python-middleware/src/config.py:." --add-data "/home/laber/box-suite/python-middleware/src/constant.py:." --add-data "/home/laber/box-suite/python-middleware/src/tools:tools/" --add-data "/home/laber/box-suite/python-middleware/src/lib:lib/" --add-data "/home/laber/box-suite/python-middleware/src/bboxAPI:bboxAPI/" "/home/laber/box-suite/python-middleware/src/run.py"
+
+(On Docker Linux) 
+- docker build -t tlk-middleware:1.0.0 -f .\Dockerfile_dev .
+(路徑需要在src folder上一層)
+- docker run --rm -it --name tlk-middleware -v ${PWD}/src:/app/src -p 5001:5001 tlk-middleware:1.0.0 sh
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/app/src/output/dist/python-middleware/lib
+export LD_LIBRARY_PATH=/app/src/output/dist/python-middleware/lib
+export LD_LIBRARY_PATH=/app/src/lib
+
+
+在Linux上打包+上傳筆記:
+1. ./venv/Scripts/activate (進到虛擬環境，否則會打包到其他環境的library)
+2. 進到./src folder裡面
+3. create-version-file version-metadata.yml --outfile version.rc (需要先pip install pyinstaller-versionfile，目的是為了產生file_version_info.txt)
+4. pyinstaller ./api-middleware.spec --clean --distpath ./output/dist --workpath ./output/build
+5. 進到 ./output/dist
+6. zip -r api-middleware.zip api-middleware/
+7. 上傳 Google Drive or NAS
+8. 如果要解壓縮的話 unzip api-middleware.zip 

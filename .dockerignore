@@ -1,0 +1,4 @@
+venv
+python_requests_example
+src/__pycache__
+src/dist

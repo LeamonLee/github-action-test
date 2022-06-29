@@ -1,0 +1,16 @@
+node_modules
+build
+buildout
+files
+logs
+.vscode/settings.json
+yarn.lock
+api-middleware
+python-middleware/src/output*/
+package-lock.json
+**/*.pyc
+venv/
+tlk_core_log/
+api_middleware_log/
+test.js
+*.log
