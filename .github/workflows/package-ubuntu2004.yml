@@ -45,7 +45,6 @@ jobs:
           zip -r ./api-middleware.zip ./api-middleware
       
       - name: Upload to google drive
-        working-directory: ./src/output/dist
         uses: adityak74/google-drive-upload-git-action@v0.1
         with:
           credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
