@@ -49,7 +49,7 @@ jobs:
         uses: adityak74/google-drive-upload-git-action@v0.1
         with:
           credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
-          filename: "api-middleware.zip"
+          filename: "./src/output/dist/api-middleware.zip"
           folderId: ${{ secrets.GDRIVE_UPLOAD_FOLDERID }}
           name: "api-middleware.zip" # optional string
           overwrite: "true" # optional boolean
