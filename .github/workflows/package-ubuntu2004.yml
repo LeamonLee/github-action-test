@@ -50,6 +50,6 @@ jobs:
         with:
           credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
           filename: "api-middleware.zip"
-          folderId: ${{ secrets.GDRIVE-UPLOAD-FOLDERID }}
+          folderId: ${{ secrets.GDRIVE_UPLOAD_FOLDERID }}
           name: "api-middleware.zip" # optional string
           overwrite: "true" # optional boolean
