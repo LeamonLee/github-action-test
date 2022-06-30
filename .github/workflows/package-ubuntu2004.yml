@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: package-on-ubuntu-2004
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "release" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-20.04
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - name: Set up Python Environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: package api-middleware into executable
+        working-directory: ./src
+        run: |
+          pyinstaller ./api-middleware.spec --clean --distpath ./output/dist --workpath ./output/build
+      
+      - name: Archive executable into zip file
+        working-directory: ./src/output/dist
+        run: |
+          sudo apt-get update
+          sudo apt-get install zip
+          zip -r ./api-middleware.zip ./api-middleware
+      
+      - name: Upload to google drive
+        working-directory: ./src/output/dist
+        uses: adityak74/google-drive-upload-git-action@main
+        with:
+          credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
+          filename: "api-middleware.zip"
+          folderId: ${{ secrets.GDRIVE-UPLOAD-FOLDERID }}
+          name: "api-middleware.zip" # optional string
+          overwrite: "true" # optional boolean
