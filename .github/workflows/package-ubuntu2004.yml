@@ -44,6 +44,10 @@ jobs:
           sudo apt-get install zip
           zip -r ./api-middleware.zip ./api-middleware
       
+      - name: Move executable archive to current path for uploading
+        run: |
+          mv ./src/output/dist/api-middleware.zip .
+
       - name: Upload to google drive
         uses: adityak74/google-drive-upload-git-action@v0.1
         with:
