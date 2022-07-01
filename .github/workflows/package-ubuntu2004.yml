@@ -47,6 +47,7 @@ jobs:
       - name: Move executable archive to current path for uploading
         run: |
           mv ./src/output/dist/api-middleware.zip .
+          ls
 
       # Upload to Drive
       - name: Upload to Google Drive
