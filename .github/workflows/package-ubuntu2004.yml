@@ -48,11 +48,19 @@ jobs:
         run: |
           mv ./src/output/dist/api-middleware.zip .
 
-      - name: Upload to google drive
-        uses: adityak74/google-drive-upload-git-action@v0.1
+      # Upload to Drive
+      - name: Upload to Google Drive
+        uses: Jodebu/upload-to-drive@master
         with:
+          target: api-middleware.zip
           credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
-          filename: "api-middleware.zip"
-          folderId: ${{ secrets.GDRIVE_UPLOAD_FOLDERID }}
-          name: "api-middleware.zip" # optional string
-          overwrite: "true" # optional boolean
+          folder: ${{ secrets.GDRIVE_UPLOAD_FOLDERID }}
+
+      # - name: Upload to google drive
+      #   uses: adityak74/google-drive-upload-git-action@v0.1
+      #   with:
+      #     credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
+      #     filename: "api-middleware.zip"
+      #     folderId: ${{ secrets.GDRIVE_UPLOAD_FOLDERID }}
+      #     name: "api-middleware.zip" # optional string
+      #     overwrite: "true" # optional boolean
